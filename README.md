@@ -1,7 +1,22 @@
 # Serverless Application Analytics Pipeline on AWS
 
+This is a guide to deploying a fully serverless data analytics pipeline on AWS. AWS is a very broad collection of services, and it can be a daunting task to just identify and configure the right set of services when you are just getting started. This guide keeps it simple and gets you from zero knowledge of AWS to visualization of your data in a few steps. You can bring your own data, but if you don't have it handy, this guide also contains instructions on how to generate some fake sample data as well.
+
+To keep things simple, this guide uses only 5 AWS services:
+- Amazon Kinesis Data Firehose for data ingestion
+- Amazon S3 for data storage
+- Amazon Glue to generate a schema
+- Amazon Athena to query the data
+- Amazon QuickSight to visualize the data
+
+**Q. Wow, that's a lot of unfamiliar names. Doesn't it already feel daunting? How come this is "keeping it simple" you ask?**
+A. Well, you will only interact with 2 of these i.e. QuickSight to create dashboards and Athena to write custom SQL queries.
+
+## Architecture Diagram
+![architecture diagram](/arch/diagram.png)
+
 ## Deploy Serverless Data Pipeline
-1. Deploy [this template](/cfn/serverless-app-analytics-pipeline.yaml) to your account using AWS CloudFormation.
+1. Deploy [this template](/cfn/serverless-app-analytics-pipeline.yaml) to your account using AWS CloudFormation. This deploys everything. Just this one step. Really! The rest is just testing and getting familiar.
 
 ## Generate Test Data
 In order to test this analytics pipeline, we need to have some data. Let's use a fake data generator.
