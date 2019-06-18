@@ -6,7 +6,7 @@
 ## Generate Test Data
 In order to test this analytics pipeline, we need to have some data. Let's use a fake data generator.
 
-2. Go to [Kinesis Data Generator](https://awslabs.github.io/amazon-kinesis-data-generator/)(KDS) and follow the setup instructions. Deploy the CloudFormation stack, then log in.
+2. Go to [Kinesis Data Generator (KDS)](https://awslabs.github.io/amazon-kinesis-data-generator/web/help.html) and follow the setup instructions. Deploy the CloudFormation stack, then log in.
 3. After logging in, select the region in which you deployed the serverless-app-analytics-pipeline stack. Then select the Kinesis Data Firehose which starts with the prefix 'app-analytics-deliveryStream-'.
 4. Use the following template. It generates fake application clickstream data in JSON format.
 	```
@@ -85,6 +85,7 @@ Now that we have explored the data little bit, let's learn how to visualize it u
 
 ## Connect Your Application
 You can send your application data such as clickstream, log files, live feed etc. straight to your Amazon Kinesis Data Firehose delivery stream. There are multiple ways to do this, but here's a couple that are popular:
+
 	a. [Fluent Plugin for Amazon Kinesis](https://github.com/awslabs/aws-fluent-plugin-kinesis)
 	b. [Kinesis Agent](https://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)
 
