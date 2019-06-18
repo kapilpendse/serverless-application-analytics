@@ -86,8 +86,8 @@ Now that we have explored the data little bit, let's learn how to visualize it u
 ## Connect Your Application
 You can send your application data such as clickstream, log files, live feed etc. straight to your Amazon Kinesis Data Firehose delivery stream. There are multiple ways to do this, but here's a couple that are popular:
 
-a. [Fluent Plugin for Amazon Kinesis](https://github.com/awslabs/aws-fluent-plugin-kinesis)
-b. [Kinesis Agent](https://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)
+- [Fluent Plugin for Amazon Kinesis](https://github.com/awslabs/aws-fluent-plugin-kinesis)
+- [Kinesis Agent](https://docs.aws.amazon.com/firehose/latest/dev/writing-with-agents.html)
 
 Once your application data starts streaming into Amazon Kinesis Data Firehose, within a few minutes you will be able to start querying and visualizing it.
 
