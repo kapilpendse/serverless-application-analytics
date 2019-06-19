@@ -118,7 +118,7 @@ Resources:
     Properties:
       CatalogId: !Ref AWS::AccountId
       DatabaseInput:
-        Name: "app-analytics-database"
+        Name: !Ref databaseName
   MyCrawler:
     Type: AWS::Glue::Crawler
     Properties:
