@@ -28,7 +28,7 @@ Asia Pacific (Singapore) | [![cfn](http://docs.aws.amazon.com/AWSCloudFormation/
 	* *databaseName*: **serverless-app-analytics-db**
 	* *s3BucketName*: **serverless-app-analytics-YOUR NAME OR INITIALS**
 	* Scroll to the bottom and click **Next**, then **Next**
-	* Acknowledge the checkbox and click **Create stack**
+	* **Acknowledge the checkbox** and click **Create stack**
 
 
 This deploys everything. The rest is just testing and getting familiar.
@@ -66,11 +66,13 @@ In order to test this analytics pipeline, we need to have some data. Let's use a
 	{    "customerId": "169",    "ipAddress": "37.166.245.52",    "countryCode": "UK",    "gender": "F",    "trafficOrigin": "search",    "event": {        "type": "addToWishlist",        "product": "apparel",        "amount": 125    }}
 	```
 
+You can keep the Kinesis Data Generator running. This way you can see how QuickSight can query and visualize fresh data within a few minutes. However, note that Kinesis Data Generator can sometimes fail to send data to your Firehose because of session time out. When this happens, it does not show you any error, but you will **stop seeing new data in your pipeline**. If this happens, reload your KDG page and log in with your username/password again.
+
 
 ## Verify Glue Crawler Result
 The serverless application analytics pipeline deployed in step (1) contains an AWS Glue crawler, which is configured to crawl the raw data every 10 minutes. The crawler attempts to make sense of the raw data and creates a meta data table in the Glue data catalog.
 
-9. After about 10 minutes of starting the KDS data generation, open AWS Glue in your AWS console.
+9. After about 10 minutes of starting the KDS data generation, open AWS Glue in your AWS console. (If you don't want to wait so long, you can run the crawler manually by clicking the **Run crawler** button.)
 10. In the left hand menu, click 'Crawlers'. Find the crawler named 'serverless-app-analytics-crawler', and observe the schedule column. It should say something like 'Every 10 minutes'.
 11. In the left hand menu, click 'Databases', click 'serverless-app-analytics-database', then click the link 'Tables in serverless-app-analytics-database'. You should see a table named 'firehose', click on it.
 12. Scroll down to the 'Schema' section. An automatically deduced schema will be displayed. Verify that the column names and data types have been correctly deduced by Glue crawler.
