@@ -131,3 +131,13 @@ You can send your application data such as clickstream, log files, live feed etc
 Once your application data starts streaming into Amazon Kinesis Data Firehose, within a few minutes you will be able to start querying and visualizing it.
 
 You can start querying and visualizing your data only after the Glue crawler creates a table for it in the Glue data catalog. Remember that we've set up the Glue crawler to run once every 10 minutes. If you don't want to wait for its next run, you can run it manually via the AWS Glue console. 
+
+## Additional Configurations
+
+### Pre-ingestion
+There are many ways to adapt the above pipeline to your particular requirements. For example, if you want to implement filtering or other data transformations before the data is stored to S3, you can do so using the [Kinesis Firehose Data Transformation feature](https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html). You can have your data automatically converted from JSON to Apache Parquet or Apache ORC formats that are better suited for querying. To do so, configure the [Record Format Conversion](https://docs.aws.amazon.com/firehose/latest/dev/record-format-conversion.html) feature of Kinesis Data Firehose.
+
+### Post-ingestion
+If you want to implement ETL jobs on the data that is stored in your S3 bucket, an easy way to do this is using [AWS Glue Jobs](https://docs.aws.amazon.com/glue/latest/dg/add-job.html). There are two types of jobs in AWS Glue: Spark and Python shell. You can get started quickly by using [built-in transforms](https://docs.aws.amazon.com/glue/latest/dg/built-in-transforms.html) to process your data. When you [automatically generate](https://docs.aws.amazon.com/glue/latest/dg/console-edit-script.html) the source code logic for your job, a script is created. You can edit this script, or you can provide your own script to process your ETL work.
+
+
